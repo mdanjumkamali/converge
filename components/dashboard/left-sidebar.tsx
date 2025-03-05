@@ -25,7 +25,7 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({
 }) => (
   <div
     className={`p-2 rounded-lg cursor-pointer flex justify-center 
-      ${isActive ? "bg-gray-100" : "hover:bg-gray-100"}`}
+      ${isActive ? "bg-gray-100 text-green-600" : "hover:bg-gray-100 hover:text-green-600"}`}
     title={title}
   >
     {icon}
@@ -58,7 +58,7 @@ const LeftSidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="w-16 h-screen border text-gray-300 flex flex-col">
+    <aside className="w-16 h-screen border-r border-gray-100 shadow-sm text-gray-300 flex flex-col">
       <div className="flex flex-col items-center py-4 space-y-2">
         <Avatar className="mb-4">
           <AvatarImage src="https://github.com/shadcn.png" />

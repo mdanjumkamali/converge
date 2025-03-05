@@ -1,4 +1,5 @@
 import LeftSidebar from "@/components/dashboard/left-sidebar";
+import TopHeader from "@/components/dashboard/top-header";
 
 export default function DashboardLayout({
   children,
@@ -8,7 +9,10 @@ export default function DashboardLayout({
   return (
     <div className="bg-white h-screen flex justify-between">
       <LeftSidebar />
-      <main className="w-full">{children}</main>
+      <main className="w-full">
+        <TopHeader />
+        {children}
+      </main>
     </div>
   );
 }
