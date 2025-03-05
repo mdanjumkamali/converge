@@ -1,10 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-import { Filter, FolderDown, Search, X } from "lucide-react";
-import { Badge } from "../ui/badge";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +7,11 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Filter, FolderDown, Search, X } from "lucide-react";
+import React, { useState } from "react";
+import { Badge } from "../ui/badge";
+import { Input } from "../ui/input";
+import MessageThreadCard from "./message-thread-card";
 
 interface FilterOption {
   value: string;
@@ -130,6 +130,18 @@ const Header: React.FC = () => (
 const ChatSidebar: React.FC = () => (
   <div className="w-[30%] h-[calc(100vh-4rem)] border-r border-gray-100 shadow-sm">
     <Header />
+    <MessageThreadCard
+      name="Test Skope Final 5"
+      lastMessage="Support2: This doesn't go on Tuesday..."
+      phoneNumber="+919971844008"
+      additionalPhoneCount={1}
+      primaryBadge={{ text: "Demo", color: "yellow" }}
+      secondaryBadge={{ text: "Internal", color: "green" }}
+      unreadCount={4}
+      timestamp="Yesterday"
+      onClick={() => console.log("hello")}
+      isActive={true}
+    />
   </div>
 );
 
