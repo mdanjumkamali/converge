@@ -1,6 +1,6 @@
-import { Sparkle, Users } from "lucide-react";
 import React from "react";
 import ChatHeader from "./chat-header";
+import ChatInput from "./chat-input";
 
 const Avatar: React.FC<{ letter: string; color: string }> = ({
   letter,
@@ -79,13 +79,15 @@ const ChatWindow = () => {
   ];
   return (
     <div className="w-[70%] h-[calc(100vh-4rem)] flex">
-      <div className="w-[95%]">
+      <div className="w-[95%] flex justify-between flex-col">
         <ChatHeader
           name={chatName}
           avatar={chatAvatar}
           users={chatUsers}
           participants={<AvatarGroup users={participants} maxDisplay={5} />}
         />
+
+        <ChatInput />
       </div>
       <div className="w-[5%] h-[calc(100vh-4rem)] border-l border-gray-100"></div>
     </div>
