@@ -3,6 +3,8 @@ import { Sparkle } from "lucide-react";
 interface ChatHeaderProps {
   name: string;
   avatar: React.ReactNode | string;
+  description?: string;
+  email?: string;
   users?: string[];
   participants?: React.ReactNode;
 }
@@ -10,6 +12,8 @@ interface ChatHeaderProps {
 const ChatHeader: React.FC<ChatHeaderProps> = ({
   name,
   avatar,
+  description,
+  email,
   users,
   participants,
 }) => {
@@ -21,7 +25,9 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         </div>
         <div className="flex flex-col">
           <h1 className="text-lg font-semibold">{name}</h1>
-          <div className="text-sm text-gray-500">{users?.join(", ")}</div>
+          <div className="text-sm text-gray-500">
+            {description || email || users?.join(", ")}
+          </div>
         </div>
       </div>
 

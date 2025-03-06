@@ -15,13 +15,17 @@ import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
-const SearchInput: React.FC = () => {
+const SearchInput: React.FC<{ onSubmit: (text: string) => void }> = ({
+  onSubmit,
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Search query:", searchQuery);
-    // Add your search logic here
+    if (searchQuery.trim() !== "") {
+      onSubmit(searchQuery);
+      setSearchQuery(""); // Clear input after sending
+    }
   };
 
   return (
@@ -49,11 +53,13 @@ const Icons = [
   { icon: <Mic size={20} /> },
 ];
 
-const ChatInput = () => {
+const ChatInput: React.FC<{ onSendMessage: (text: string) => void }> = ({
+  onSendMessage,
+}) => {
   return (
     <div className="border-t border-gray-100 w-full h-24 px-4">
-      <div className="">
-        <SearchInput />
+      <div>
+        <SearchInput onSubmit={onSendMessage} />
       </div>
       <div className="mt-2 flex items-center justify-between">
         <div className="flex items-center gap-5 ">
