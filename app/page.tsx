@@ -1,9 +1,6 @@
-import AuthButton from "@/components/header-auth";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  return (
-    <>
-      <AuthButton />
-    </>
-  );
+  redirect("/sign-in");
+  return <></>;
 }

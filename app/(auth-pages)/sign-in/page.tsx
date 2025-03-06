@@ -28,7 +28,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             name="email"
             placeholder="you@example.com"
             required
-            className="bg-white text-black"
+            className="bg-white text-black  bg-transparent  focus-visible:ring-offset-0 focus-visible:ring-0"
           />
           <div className="flex justify-between items-center">
             <Label htmlFor="password" className="text-black">
@@ -46,7 +46,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             name="password"
             placeholder="Your password"
             required
-            className="bg-white text-black"
+            className="bg-white text-black  bg-transparent  focus-visible:ring-offset-0 focus-visible:ring-0"
           />
           <SubmitButton pendingText="Signing In..." formAction={signInAction}>
             Sign in
