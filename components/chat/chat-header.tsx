@@ -18,7 +18,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   participants,
 }) => {
   return (
-    <div className="w-full border-b h-16 px-5 flex items-center justify-between border-gray-100 shadow-sm">
+    <div className="w-full border-b  p-[0.6rem] flex items-center justify-between border-gray-100 shadow-sm">
       <div className="flex gap-4 items-center">
         <div className="bg-gray-200 rounded-full flex items-center justify-center w-10 h-10">
           {avatar}
