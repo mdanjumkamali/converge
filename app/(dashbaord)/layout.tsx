@@ -9,7 +9,7 @@ export default function DashboardLayout({
   return (
     <div className="bg-white h-screen flex justify-between">
       <LeftSidebar />
-      <main className="w-full">
+      <main className="w-full overflow-hidden">
         <TopHeader />
         {children}
       </main>
