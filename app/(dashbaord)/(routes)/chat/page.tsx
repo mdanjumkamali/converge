@@ -1,14 +1,12 @@
-import ChatSidebar from "@/components/chat/chat-sidebar";
-import ChatWindow from "@/components/chat/chat-window";
 import React from "react";
+import { getGroups, getUsers } from "./action/actions";
+import ChatContainer from "@/components/chat/chat-container";
 
-const page = () => {
-  return (
-    <div className=" text-black flex">
-      <ChatSidebar />
-      <ChatWindow />
-    </div>
-  );
-};
+async function Page() {
+  const users = await getUsers();
+  const groups = await getGroups();
 
-export default page;
+  return <ChatContainer initialUsers={users} initialGroups={groups} />;
+}
+
+export default Page;

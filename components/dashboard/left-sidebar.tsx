@@ -1,16 +1,16 @@
-import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
+  Filter,
   Home,
   MessageCircle,
-  Users,
-  Filter,
-  Zap,
-  Settings,
   PanelRightClose,
+  Settings,
   Shapes,
+  Users,
+  Zap,
 } from "lucide-react";
+import React from "react";
 import { Separator } from "../ui/separator";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface SidebarIconProps {
   icon: React.ReactNode;
@@ -34,11 +34,11 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({
 
 const LeftSidebar: React.FC = () => {
   const firstGroup = [
-    { icon: <Home size={24} />, title: "Home", isActive: true },
+    { icon: <Home size={24} />, title: "Home", isActive: false },
   ];
 
   const secondGroup = [
-    { icon: <MessageCircle size={24} />, title: "Chats", isActive: false },
+    { icon: <MessageCircle size={24} />, title: "Chats", isActive: true },
     { icon: <Users size={24} />, title: "Contacts", isActive: false },
     { icon: <Filter size={24} />, title: "Filters", isActive: false },
   ];
