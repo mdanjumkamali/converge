@@ -1,6 +1,7 @@
 import React from "react";
 import ChatHeader from "./chat-header";
 import ChatInput from "./chat-input";
+import Chat from "./chat-display";
 
 const Avatar: React.FC<{ letter: string; color: string }> = ({
   letter,
@@ -86,7 +87,7 @@ const ChatWindow = () => {
           users={chatUsers}
           participants={<AvatarGroup users={participants} maxDisplay={5} />}
         />
-
+        <Chat />
         <ChatInput />
       </div>
       <div className="w-[5%] h-[calc(100vh-4rem)] border-l border-gray-100"></div>
