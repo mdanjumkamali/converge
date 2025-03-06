@@ -2,6 +2,7 @@ import React from "react";
 import ChatHeader from "./chat-header";
 import ChatInput from "./chat-input";
 import Chat from "./chat-display";
+import { Chat as chatprop } from "@/app/(dashbaord)/(routes)/chat/action/actions";
 
 const Avatar: React.FC<{ letter: string; color: string }> = ({
   letter,
@@ -56,7 +57,11 @@ const AvatarGroup: React.FC<{
   );
 };
 
-const ChatWindow = () => {
+interface ChatWindowProps {
+  chat: chatprop[];
+}
+
+const ChatWindow: React.FC<ChatWindowProps> = ({ chat }) => {
   const chatName = "Test El Centro";
   const chatAvatar = "TC";
   const chatUsers = [
@@ -87,7 +92,7 @@ const ChatWindow = () => {
           users={chatUsers}
           participants={<AvatarGroup users={participants} maxDisplay={5} />}
         />
-        <Chat />
+        <Chat chat={chat} />
         <ChatInput />
       </div>
       <div className="w-[5%] h-[calc(100vh-4rem)] border-l border-gray-100"></div>

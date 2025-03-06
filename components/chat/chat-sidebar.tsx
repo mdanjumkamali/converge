@@ -7,9 +7,12 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Filter, FolderDown, Search, X } from "lucide-react";
+import { Group } from "@/interface/group.interface";
+import { Users } from "@/interface/users.interface";
+import { Filter, FolderDown, MessageCircle, Search, X } from "lucide-react";
 import React, { useState } from "react";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import MessageThreadCard from "./message-thread-card";
 
@@ -127,22 +130,51 @@ const Header: React.FC = () => (
   </div>
 );
 
-const ChatSidebar: React.FC = () => (
-  <div className="w-[30%] h-[calc(100vh-4rem)] border-r border-gray-100 shadow-sm">
-    <Header />
-    <MessageThreadCard
-      name="Test Skope Final 5"
-      lastMessage="Support2: This doesn't go on Tuesday..."
-      phoneNumber="+919971844008"
-      additionalPhoneCount={1}
-      primaryBadge={{ text: "Demo", color: "yellow" }}
-      secondaryBadge={{ text: "Internal", color: "green" }}
-      unreadCount={4}
-      timestamp="Yesterday"
-      onClick={() => console.log("hello")}
-      isActive={true}
-    />
-  </div>
-);
+interface ChatSidebarProps {
+  users: Users[];
+  groups: Group[];
+}
+
+const ChatSidebar: React.FC<ChatSidebarProps> = ({ users, groups }) => {
+  return (
+    <div className="w-[30%] h-[calc(100vh-4rem)] border-r border-gray-100 shadow-sm relative">
+      <Header />
+
+      {/* Scrollable message list container */}
+      <div className="overflow-y-auto h-[calc(100vh-8rem)]">
+        {users && renderMessageThreadCards(users)}
+        {groups && renderMessageThreadCards(groups)}
+      </div>
+
+      <div className="absolute bottom-4 right-4">
+        <Button
+          className="rounded-full w-12 h-12 bg-green-600 hover:bg-green-700 shadow-lg"
+          onClick={() => console.log("New message")}
+        >
+          <div className="flex items-center justify-center">
+            <MessageCircle className="h-6 w-6 text-white" />
+          </div>
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 export default ChatSidebar;
+
+const renderMessageThreadCards = (items: any[]) => {
+  return items.map((item, index) => (
+    <MessageThreadCard
+      key={index}
+      name={item.name}
+      lastMessage={"This doesn't go on Tuesday..."}
+      phoneNumber={item.phone || "+919971844008"}
+      additionalPhoneCount={1}
+      primaryBadge={{ text: "Demo", color: "yellow" }}
+      secondaryBadge={{ text: "Demo", color: "yellow" }}
+      unreadCount={4}
+      timestamp={item.created_at}
+      onClick={() => console.log(`Clicked ${item.id}`)}
+    />
+  ));
+};
