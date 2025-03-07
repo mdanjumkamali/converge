@@ -18,7 +18,7 @@ interface Message {
     avatar?: string;
   };
   timestamp: string;
-  created_at: string; // Add this for date grouping
+  created_at: string;
   isOutgoing: boolean;
   status?: "sent" | "delivered" | "read";
   metadata?: {
@@ -134,9 +134,12 @@ const Chat: React.FC<ChatProps> = ({ chat, currentUserId }) => {
         id: msg.id,
         text: msg.message,
         sender: msg.sender,
-        timestamp: new Date(msg.created_at).toLocaleTimeString([], {
+        timestamp: new Date(
+          new Date(msg.created_at).getTime() + 5.5 * 60 * 60 * 1000
+        ).toLocaleTimeString("en-IN", {
           hour: "2-digit",
           minute: "2-digit",
+          hour12: true,
         }),
         created_at: msg.created_at,
         isOutgoing: msg.sender.id === currentUserId,
@@ -147,9 +150,12 @@ const Chat: React.FC<ChatProps> = ({ chat, currentUserId }) => {
         id: msg.id,
         text: msg.message,
         sender: msg.sender,
-        timestamp: new Date(msg.created_at).toLocaleTimeString([], {
+        timestamp: new Date(
+          new Date(msg.created_at).getTime() + 5.5 * 60 * 60 * 1000
+        ).toLocaleTimeString("en-IN", {
           hour: "2-digit",
           minute: "2-digit",
+          hour12: true,
         }),
         created_at: msg.created_at,
         isOutgoing: msg.sender.id === currentUserId,
@@ -180,7 +186,7 @@ const Chat: React.FC<ChatProps> = ({ chat, currentUserId }) => {
     <div
       ref={chatContainerRef}
       onScroll={handleScroll}
-      className="h-[calc(100vh-12rem)] p-4 overflow-y-auto relative"
+      className="h-[calc(100vh-12rem)] p-4 overflow-y-auto relative scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
     >
       {Object.entries(groupedMessages).map(([dateKey, messages]) => (
         <div key={dateKey}>

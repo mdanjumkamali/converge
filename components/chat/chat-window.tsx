@@ -19,6 +19,7 @@ import { Group } from "@/interface/group.interface";
 import { ArrowDown } from "lucide-react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
+import RightSidebar from "./chat-right-sidebar";
 
 // Avatar Component
 const Avatar: React.FC<{ letter: string; color: string }> = ({
@@ -409,7 +410,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         </div>
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
-      <div className="w-[5%] h-[calc(100vh-4rem)] border-l border-gray-100"></div>
+      <RightSidebar />
     </div>
   );
 };
